@@ -3,9 +3,9 @@
 * a. Description: 
   * An EV charger supports both dashboard display and touchscreen interface, offering functionalities such as user-friendly interaction through an LCD display, device connection, and basic data transmission. It enables user ID authentication, scheduling and canceling charging sessions, and firmware updates via OTA. The system also monitors essential factors like power voltage, temperature, and connectivity through RJ45, WiFi, or 4G, providing real-time alerts for any issues. With the ability to reset and clear cache, it ensures a smooth and efficient charging experience.
   * Design
-    ![Design](https://github.com/user-attachments/assets/97826d45-9100-4022-b890-48b268bc5db2)
+  * ![Design](https://github.com/user-attachments/assets/ea5555c9-2bdb-4959-a427-cfbc3ccd86fa)
   * Environment build
-    ![env_build](https://github.com/user-attachments/assets/8f971233-29b7-4a06-8b44-165ceab6bff8)
+  * ![env_build](https://github.com/user-attachments/assets/8f971233-29b7-4a06-8b44-165ceab6bff8)
   
 * b. supportive features 
   * Dashboard LCD/LED
