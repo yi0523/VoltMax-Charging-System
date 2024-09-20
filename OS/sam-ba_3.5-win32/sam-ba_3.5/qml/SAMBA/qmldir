@@ -1,0 +1,10 @@
+module SAMBA
+plugin samba_core
+classname SambaCorePlugin
+Applet 3.5 Applet.qml
+AppletCommand 3.5 AppletCommand.qml
+AppletConnectionType 3.5 AppletConnectionType.js
+Connection 3.5 Connection.qml
+Device 3.5 Device.qml
+singleton Utils 3.5 Utils.qml
+singleton Script 3.5 Script.qml
