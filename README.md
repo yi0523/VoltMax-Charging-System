@@ -2,6 +2,12 @@
 ## What’s ev charger
 * a. Description: 
   * An EV charger supports both dashboard display and touchscreen interface, offering functionalities such as user-friendly interaction through an LCD display, device connection, and basic data transmission. It enables user ID authentication, scheduling and canceling charging sessions, and firmware updates via OTA. The system also monitors essential factors like power voltage, temperature, and connectivity through RJ45, WiFi, or 4G, providing real-time alerts for any issues. With the ability to reset and clear cache, it ensures a smooth and efficient charging experience.
+  * Design menu
+  * ![design menu](https://github.com/user-attachments/assets/c91e30a3-6a2f-4a5f-9c14-59bd4556b894)
+  * Demo test
+  * ![demo_test](https://github.com/user-attachments/assets/0a3abf69-a96b-4b52-a8da-6b7f1a627e42)
+  * Environment build
+  * ![env_build](https://github.com/user-attachments/assets/8f971233-29b7-4a06-8b44-165ceab6bff8)
   
 * b. supportive features 
   * Dashboard LCD/LED
@@ -21,6 +27,7 @@
 ## How to implement 
 * Hardware: 
   * Board: Microchip’s SAMA5D27-SOM1-EK1 MPU
+    ![a5d27_som1_ek_board](https://github.com/user-attachments/assets/5e7c5d76-d1a7-4020-b37d-3d558239cd2a)
   * Dashboard LCD/LED
     
 * System Software:
@@ -35,7 +42,10 @@
     * charge voltage control 
     * output: date
     * payment 
-    * alert 
+    * alert
+* Example for verification result
+  ![verification_result](https://github.com/user-attachments/assets/1fa557d6-05da-45b0-9ca1-8d9150edcbaf)
+  
 
 ## Boot process
 #### Bootloader:
@@ -136,9 +146,8 @@ git/som1_ek/buildroot-at91$ make
 Burn the reprogrammed sdcard.img to microSD,and then put into SD1 and open it 
 Can use: balenaEtcher( https://www.balena.io/etcher/ )
 
-
-## OS Implementation
-Set up the development environment for cross-compiling the OS. Using Buildroot or Yocto for embedded Linux.
+## demo boot
+- ![demo_boot](https://github.com/user-attachments/assets/d2ab7177-c76d-4719-82cf-0ede3251f43d)
 
 ## Debugging and Testing
 * Enable UART output to log bootloader and OS boot messages.
