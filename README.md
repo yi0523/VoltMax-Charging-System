@@ -82,7 +82,7 @@ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib buil
  
 make (6~7 hours)
 ```
-- ![make](https://github.com/user-attachments/assets/01281573-4df7-4776-b905-e65d9ec77855)
+ ![make](https://github.com/user-attachments/assets/01281573-4df7-4776-b905-e65d9ec77855)
 
 #### 5. Solve the problem of patch package path
 ```
@@ -90,16 +90,16 @@ ivy@ubuntu:~/git/som1_ek/buildroot-at91$
 make menuconfig
 ```
 - choose External options
-- ![choose External options](https://github.com/user-attachments/assets/aa06d099-1999-4eb1-816b-635f76124965)
+ ![choose External options](https://github.com/user-attachments/assets/aa06d099-1999-4eb1-816b-635f76124965)
 
 - Remove the “*” of gst1-at91
-- ![Remove the gst1-at91](https://github.com/user-attachments/assets/e3b64311-9b0c-4eca-879f-69f793d87819)
+ ![Remove the gst1-at91](https://github.com/user-attachments/assets/e3b64311-9b0c-4eca-879f-69f793d87819)
 
 - make again
-- ![make again](https://github.com/user-attachments/assets/2d01cfb7-9a61-4a8f-a776-a1703f1d312d)
+ ![make again](https://github.com/user-attachments/assets/2d01cfb7-9a61-4a8f-a776-a1703f1d312d)
 
 - Successful
-- ![Successful](https://github.com/user-attachments/assets/24580e2b-dc33-427a-95eb-d7d8bae9f418)
+ ![Successful](https://github.com/user-attachments/assets/24580e2b-dc33-427a-95eb-d7d8bae9f418)
 
 
 ## OS Implementation
