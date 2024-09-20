@@ -49,7 +49,39 @@ buildroot-external-microchip (Setting related)
 # cd git
 ```
 #### 1. If make fails: First delete the “buildroot-at91” and “buildroot-external-microchip” folders
-
+```
+#rm -rf buildroot-at91/
+#rm -rf buildroot-external-microchip/
+```
+#### 2. Buildroot Source Build, install necessary packages
+```
+ivy@ubuntu:~/git$
+sudo apt update
+ 
+sudo apt install build-essential ccache ecj fastjar file g++ gawk \gettext git java-propose-classpath libelf-dev libncurses5-dev \libncursesw5-dev libssl-dev python python2.7-dev python3 unzip wget \python3-distutils python3-setuptools python3-dev rsync subversion \swig time xsltproc zlib1g-dev
+ 
+sudo apt-get install libssl1.0-dev
+```
+#### 3. Download build-root & Switch Branch,
+When completed, two packages will be generated ”buildroot-at91” & “buildroot-external-microchip”
+```
+ivy@ubuntu:~/git/som1_ek $
+git clone https://github.com/linux4sam/buildroot-at91.git -b 2020.02-at91
+ 
+git clone https://github.com/linux4sam/buildroot-external-microchip.git -b 2020.02-at91   
+```
+#### 4. SAMA5D27 SOM1 EK source build
+```
+make atmel_sama5d27_som1_ek_mmc_dev_defconfig
+ 
+BR2_EXTERNAL=../buildroot-external-microchip/ make sama5d27_som1_ek_graphics_defconfig
+ 
+sudo apt-get install gtk-doc-tools
+ 
+sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm
+ 
+make (6~7 hours)
+```
 
 ## OS Implementation
 Set up the development environment for cross-compiling the OS. Using Buildroot or Yocto for embedded Linux.
