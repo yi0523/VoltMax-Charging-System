@@ -38,7 +38,7 @@
     * alert 
 
 ## Boot process
-* Bootloader:
+#### Bootloader:
 #### Prerequisite
 create a folder to store the buildroot source code
 buildroot-at91 (Burn binary)
@@ -100,6 +100,41 @@ make menuconfig
 
 - Successful
 - ![Successful](https://github.com/user-attachments/assets/24580e2b-dc33-427a-95eb-d7d8bae9f418)
+
+#### SD boot configuration:
+#### 1. Copy uboot-sd1-env.txt to path:
+buildroot-external-microchip/board/microchip/sama5d27_som1_ek/
+```
+ # wget https://raw.githubusercontent.com/kamval/SAMA5D27-SOM1-EK1/master/3.%20headless%20SD1/uboot-env/uboot-sd1-env.txt
+ # cp uboot-sd1-env.txt ../buildroot-external-microchip/board/microchip/sama5d27_som1_ek/
+```
+#### 2. Delete two files “at91bootstrap” “uboot”
+```
+cd git/som1_ek/buildroot-at91/output/build$
+# rm -rf at91bootstrap3-v3.10.2/
+# rm -rf uboot-linux4sam-2020.10.1/
+```
+#### 3. Modify the config value to SD1
+```
+# make menuconfig  
+Modify the setting values ​​as follows:
+→ Bootloaders ->   (sama5d27_som1_eksd1_uboot) Defconfig name
+ 
+ 
+→ Bootloaders ->  (sama5d27_som1_ek_mmc1) Board defconfig 
+ 
+→ Bootloaders
+->  [*]   Environment image
+ --->    ($(BR2_EXTERNAL_MCHP_PATH)/board/microchip/sama5d27_som1_ek/uboot-sd1-env.txt) Source files for environment
+ --->    $(BR2_EXTERNAL_MCHP_PATH)/board/microchip/sama5d27_som1_ek/uboot-sd1-env.txt
+
+```
+#### 4. make
+```
+git/som1_ek/buildroot-at91$ make
+```
+Burn the reprogrammed sdcard.img to microSD,and then put into SD1 and open it 
+Can use: balenaEtcher( https://www.balena.io/etcher/ )
 
 
 ## OS Implementation
