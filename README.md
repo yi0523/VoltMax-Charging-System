@@ -22,7 +22,7 @@
 * Hardware: 
   * Board: Microchip’s SAMA5D27-SOM1-EK1 MPU
   * Dashboard LCD/LED
-  * 
+    
 * System Software:
   * OS: Linux kernel v5.4.81 
   * FW: uboot 2019.04-at91
@@ -38,8 +38,17 @@
     * alert 
 
 ## Boot process
-* Bootloader: 
-
+* Bootloader:
+#### Prerequisite
+create a folder to store the buildroot source code
+buildroot-at91 (Burn binary)
+buildroot-external-microchip (Setting related)
+```
+# mkdir git
+# mkdir som1_ek
+# cd git
+```
+#### 1. If make fails: First delete the “buildroot-at91” and “buildroot-external-microchip” folders
 
 
 ## OS Implementation
