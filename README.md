@@ -147,7 +147,81 @@ Burn the reprogrammed sdcard.img to microSD,and then put into SD1 and open it
 Can use: balenaEtcher( https://www.balena.io/etcher/ )
 
 ## demo boot
-- ![demo_boot](https://github.com/user-attachments/assets/d2ab7177-c76d-4719-82cf-0ede3251f43d)
+![demo_boot](https://github.com/user-attachments/assets/d2ab7177-c76d-4719-82cf-0ede3251f43d)
+
+## Nand flash bootup
+#### Burn-in process
+#### 1. Used Sam-ba_3.5
+Download path : https://ww1.microchip.com/downloads/en/DeviceDoc/sam-ba_3.5-win32.zip
+
+#### 2. Buildroot
+* create a directory under git and enter : 
+```
+git clone https://github.com/linux4sam/buildroot-at91.git
+git clone https://github.com/linux4microchip/buildroot-external-microchip.git
+```
+* go to the buildroot-at91 path and enter :
+```
+git checkout linux4sam-2022.10 -b buildroot-at91-linux4sam-2022.10
+```
+* go to the buildroot-external-microchip path and enter :
+```
+git checkout linux4microchip-2022.10 -b buildroot-external-microchip-linux4microchip-2022.10
+```
+* copy these two files under this path buildroot-external-microchip/
+```
+0000_buildroot_external_microchip_mx-linux4sam-2022.10.patch 
+0000_buildroot_External_microchip_esmt-2022.10.patch
+
+ivy@ubuntu:~/git/som1_emst/buildroot-external-microchip$ ls
+![ls](https://github.com/user-attachments/assets/84ebc495-9a06-4f4c-b607-6121c7c86073)
+```
+* enter two cmd:
+```
+git apply 0000_buildroot_external_microchip_mx-linux4sam-2022.10.patch
+git apply 0000_buildroot_External_microchip_esmt-2022.10.patch
+```
+* go back to the buildroot-at91 path and enter:
+```
+BR2_EXTERNAL=../buildroot-external-microchip make sama5d27_som1_ek_graphics_defconfig
+```
+* make
+```
+ivy@ubuntu:~/git/som1_emst/buildroot-at91$ make
+```
+* enter the buildroot-external-microchip/configs path and enter:
+```
+vim sama5d27_som1_ek_graphics_defconfig
+```
+* modify the following values, and if there are no following parameters, please add them manually:
+```
+BR2_TARGET_ROOTFS_UBIFS_LEBSIZE=0x3E000
+BR2_TARGET_ROOTFS_UBI_PEBSIZE=0x40000
+BR2_TARGET_ROOTFS_UBIFS_MINIOSIZE=0x1000
+```
+* go back to the buildroot-at91 path for the second compilation
+```
+ivy@ubuntu:~/git/som1_emst/buildroot-at91$ BR2_EXTERNAL=../buildroot-extern
+al-microchip make samasd27_som1_ek_graphics_defconfig
+```
+
+* do make again
+  
+#### 3. Image
+* the file shown in the buildroot-at91/output/images path and place it under sam-ba_3.5:
+![ls](https://github.com/user-attachments/assets/eae2041c-3894-40c5-9996-55b32b9bac96)
+
+* open cmd under sma-ba_3.5 and enter nand.bat to start burning
+connect the purple short-circuit line and then connect USB1, execute program.bat
+![start burning](https://github.com/user-attachments/assets/5bbc82a9-a1b5-4932-a1b5-777b83b96eed)
+
+* after burning, enter
+```
+sam-ba -p serial -d sama5d2 -a bootconfig -c writecfg:bscr:valid,bureg0 -c writecfg:bureg0:ext_mem_boot
+```
+
+* press reset on the development version to boot successfully
+![boot successfully](https://github.com/user-attachments/assets/95d4711d-64cd-45cb-b518-60cb41af8760)
 
 ## Debugging and Testing
 * Enable UART output to log bootloader and OS boot messages.
