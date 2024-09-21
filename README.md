@@ -5,7 +5,7 @@
   * Design
   * ![Design](https://github.com/user-attachments/assets/ea5555c9-2bdb-4959-a427-cfbc3ccd86fa)
   * Environment build
-  * ![env_build](https://github.com/user-attachments/assets/8f971233-29b7-4a06-8b44-165ceab6bff8)
+  * ![env_build](https://github.com/user-attachments/assets/5a3cd95b-470d-44d8-bd7c-b642c2511581)
   
 * b. supportive features 
   * Dashboard LCD/LED
