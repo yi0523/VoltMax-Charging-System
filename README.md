@@ -27,7 +27,8 @@
 ## How to implement 
 * Hardware: 
   * Board: Microchip’s SAMA5D27-SOM1-EK1 MPU
-    ![a5d27_som1_ek_board](https://github.com/user-attachments/assets/5e7c5d76-d1a7-4020-b37d-3d558239cd2a)
+  
+   ![a5d27_som1_ek_board](https://github.com/user-attachments/assets/5e7c5d76-d1a7-4020-b37d-3d558239cd2a)
   * Dashboard LCD/LED
     
 * System Software:
@@ -44,7 +45,8 @@
     * payment 
     * alert
 * Example for verification result
-  ![verification_result](https://github.com/user-attachments/assets/1fa557d6-05da-45b0-9ca1-8d9150edcbaf)
+
+ ![verification_result](https://github.com/user-attachments/assets/1fa557d6-05da-45b0-9ca1-8d9150edcbaf)
   
 
 ## Boot process
@@ -92,6 +94,8 @@ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib buil
  
 make (6~7 hours)
 ```
+
+
 ![make](https://github.com/user-attachments/assets/01281573-4df7-4776-b905-e65d9ec77855)
 
 #### 5. Solve the problem of patch package path
@@ -100,16 +104,20 @@ ivy@ubuntu:~/git/som1_ek/buildroot-at91$
 make menuconfig
 ```
 - choose External options
-- ![choose External options](https://github.com/user-attachments/assets/aa06d099-1999-4eb1-816b-635f76124965)
+
+ ![choose External options](https://github.com/user-attachments/assets/aa06d099-1999-4eb1-816b-635f76124965)
 
 - Remove the “*” of gst1-at91
-- ![Remove the gst1-at91](https://github.com/user-attachments/assets/e3b64311-9b0c-4eca-879f-69f793d87819)
+
+ ![Remove the gst1-at91](https://github.com/user-attachments/assets/e3b64311-9b0c-4eca-879f-69f793d87819)
 
 - make again
-- ![make again](https://github.com/user-attachments/assets/2d01cfb7-9a61-4a8f-a776-a1703f1d312d)
+
+ ![make again](https://github.com/user-attachments/assets/2d01cfb7-9a61-4a8f-a776-a1703f1d312d)
 
 - Successful
-- ![Successful](https://github.com/user-attachments/assets/24580e2b-dc33-427a-95eb-d7d8bae9f418)
+
+ ![Successful](https://github.com/user-attachments/assets/24580e2b-dc33-427a-95eb-d7d8bae9f418)
 
 #### SD boot configuration:
 #### 1. Copy uboot-sd1-env.txt to path:
@@ -147,6 +155,7 @@ Burn the reprogrammed sdcard.img to microSD,and then put into SD1 and open it
 Can use: balenaEtcher( https://www.balena.io/etcher/ )
 
 ## demo boot
+
 ![demo_boot](https://github.com/user-attachments/assets/d2ab7177-c76d-4719-82cf-0ede3251f43d)
 
 ## Nand flash bootup
@@ -174,6 +183,7 @@ git checkout linux4microchip-2022.10 -b buildroot-external-microchip-linux4micro
 0000_buildroot_External_microchip_esmt-2022.10.patch
 
 ivy@ubuntu:~/git/som1_emst/buildroot-external-microchip$ ls
+
 ![ls](https://github.com/user-attachments/assets/84ebc495-9a06-4f4c-b607-6121c7c86073)
 ```
 * enter two cmd:
@@ -209,10 +219,12 @@ al-microchip make samasd27_som1_ek_graphics_defconfig
   
 #### 3. Image
 * the file shown in the buildroot-at91/output/images path and place it under sam-ba_3.5:
-![ls](https://github.com/user-attachments/assets/eae2041c-3894-40c5-9996-55b32b9bac96)
+
+ ![ls](https://github.com/user-attachments/assets/eae2041c-3894-40c5-9996-55b32b9bac96)
 
 * open cmd under sma-ba_3.5 and enter nand.bat to start burning
 connect the purple short-circuit line and then connect USB1, execute program.bat
+
 ![start burning](https://github.com/user-attachments/assets/5bbc82a9-a1b5-4932-a1b5-777b83b96eed)
 
 * after burning, enter
@@ -221,7 +233,8 @@ sam-ba -p serial -d sama5d2 -a bootconfig -c writecfg:bscr:valid,bureg0 -c write
 ```
 
 * press reset on the development version to boot successfully
-![boot successfully](https://github.com/user-attachments/assets/95d4711d-64cd-45cb-b518-60cb41af8760)
+
+ ![boot successfully](https://github.com/user-attachments/assets/95d4711d-64cd-45cb-b518-60cb41af8760)
 
 ## Debugging and Testing
 * Enable UART output to log bootloader and OS boot messages.
