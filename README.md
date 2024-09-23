@@ -9,7 +9,7 @@
   
    ![env_build](https://github.com/user-attachments/assets/5a3cd95b-470d-44d8-bd7c-b642c2511581)
   
-* b. supportive features 
+* b. Supportive features 
   * Dashboard LCD/LED
   * Device connection: SAE J1772, vehicle simulator, continuing electrical board, power board, fan, speaker, motherboard, RFID
   * UART data transmission
