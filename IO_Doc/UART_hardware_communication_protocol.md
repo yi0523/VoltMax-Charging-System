@@ -8,7 +8,7 @@
 ![env](https://github.com/user-attachments/assets/213962b9-3f79-4be6-b0b7-d6bfa73d2b6a)
 
 * Code
-'''
+```
 #include <iostream>
 #include <stdio.h>
 #include <fcntl.h>
@@ -76,7 +76,7 @@ uart_transmit(PATH, baudRate, vtime, buf, tx_len, received_bytes);
  
 return 0;
 }
-''' 
+```
 
 * Result
 
