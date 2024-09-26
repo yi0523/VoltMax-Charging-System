@@ -4,14 +4,14 @@
   * An EV charger supports both dashboard display and touchscreen interface, offering functionalities such as user-friendly interaction through an LCD display, device connection, and basic data transmission. It enables user ID authentication, scheduling and canceling charging sessions, and firmware updates via OTA. The system also monitors essential factors like power voltage, temperature, and connectivity through RJ45, WiFi, or 4G, providing real-time alerts for any issues. With the ability to reset and clear cache, it ensures a smooth and efficient charging experience.
   * Design
   
-   ![Design](https://github.com/user-attachments/assets/ea5555c9-2bdb-4959-a427-cfbc3ccd86fa)
-  * Environment build
+   ![design](https://github.com/user-attachments/assets/a426253c-da99-41a3-83c3-8009d8a0ff1e)
+  * System setup
   
    ![env_build](https://github.com/user-attachments/assets/5a3cd95b-470d-44d8-bd7c-b642c2511581)
   
 * b. Supportive features 
   * Dashboard LCD/LED
-  * Device connection: SAE J1772, vehicle simulator, continuing electrical board, power board, fan, speaker, motherboard, RFID
+  * Device connection: SAE J1772, vehicle simulator,fan, speaker, motherboard, RFID
   * UART data transmission
   * User ID authentication
   * Start scheduled charging
@@ -50,8 +50,10 @@
   
 
 ## Boot process
-#### Bootloader:
-#### Prerequisite
+
+![Boot process](https://github.com/user-attachments/assets/66b1c3c9-67df-47d9-be9a-be5774535be0)
+## System quickstart guide:
+### Prerequisite
 create a folder to store the buildroot source code
 buildroot-at91 (Burn binary)
 buildroot-external-microchip (Setting related)
@@ -119,7 +121,7 @@ make menuconfig
 
  ![Successful](https://github.com/user-attachments/assets/24580e2b-dc33-427a-95eb-d7d8bae9f418)
 
-#### SD boot configuration:
+### How to compile the firmware and flash the firmware
 #### 1. Copy uboot-sd1-env.txt to path:
 buildroot-external-microchip/board/microchip/sama5d27_som1_ek/
 ```
@@ -147,37 +149,37 @@ Modify the setting values ​​as follows:
  --->    $(BR2_EXTERNAL_MCHP_PATH)/board/microchip/sama5d27_som1_ek/uboot-sd1-env.txt
 
 ```
-#### 4. make
+#### 4. Compile bootloader 
 ```
 git/som1_ek/buildroot-at91$ make
 ```
 Burn the reprogrammed sdcard.img to microSD,and then put into SD1 and open it 
 Can use: balenaEtcher( https://www.balena.io/etcher/ )
 
-## demo boot
+## Demo boot
 
 ![demo_boot](https://github.com/user-attachments/assets/d2ab7177-c76d-4719-82cf-0ede3251f43d)
 
-## Nand flash bootup
-#### Burn-in process
+### Update the firmware to flash memory
+### Firmware flashing process 
 #### 1. Used Sam-ba_3.5
 Download path : https://ww1.microchip.com/downloads/en/DeviceDoc/sam-ba_3.5-win32.zip
 
 #### 2. Buildroot
-* create a directory under git and enter : 
+* Create a directory under git file 
 ```
 git clone https://github.com/linux4sam/buildroot-at91.git
 git clone https://github.com/linux4microchip/buildroot-external-microchip.git
 ```
-* go to the buildroot-at91 path and enter :
+* Go to the buildroot-at91 path
 ```
 git checkout linux4sam-2022.10 -b buildroot-at91-linux4sam-2022.10
 ```
-* go to the buildroot-external-microchip path and enter :
+* Go to the buildroot-external-microchip path
 ```
 git checkout linux4microchip-2022.10 -b buildroot-external-microchip-linux4microchip-2022.10
 ```
-* copy these two files under this path buildroot-external-microchip/
+* Copy these two files under this path buildroot-external-microchip/
 ```
 0000_buildroot_external_microchip_mx-linux4sam-2022.10.patch 
 0000_buildroot_External_microchip_esmt-2022.10.patch
@@ -186,56 +188,53 @@ ivy@ubuntu:~/git/som1_emst/buildroot-external-microchip$ ls
 
 ![ls](https://github.com/user-attachments/assets/84ebc495-9a06-4f4c-b607-6121c7c86073)
 ```
-* enter two cmd:
+* Enter two cmd:
 ```
 git apply 0000_buildroot_external_microchip_mx-linux4sam-2022.10.patch
 git apply 0000_buildroot_External_microchip_esmt-2022.10.patch
 ```
-* go back to the buildroot-at91 path and enter:
+* Go back to the buildroot-at91 path
 ```
 BR2_EXTERNAL=../buildroot-external-microchip make sama5d27_som1_ek_graphics_defconfig
 ```
-* make
+* Compile bootloader 
 ```
 ivy@ubuntu:~/git/som1_emst/buildroot-at91$ make
 ```
-* enter the buildroot-external-microchip/configs path and enter:
+* Open the buildroot configuration file
 ```
 vim sama5d27_som1_ek_graphics_defconfig
 ```
-* modify the following values, and if there are no following parameters, please add them manually:
+* Modify the following values, and if there are no following parameters, please add them manually
 ```
 BR2_TARGET_ROOTFS_UBIFS_LEBSIZE=0x3E000
 BR2_TARGET_ROOTFS_UBI_PEBSIZE=0x40000
 BR2_TARGET_ROOTFS_UBIFS_MINIOSIZE=0x1000
 ```
-* go back to the buildroot-at91 path for the second compilation
+* Go back to the buildroot-at91 path for the second compilation
 ```
 ivy@ubuntu:~/git/som1_emst/buildroot-at91$ BR2_EXTERNAL=../buildroot-extern
 al-microchip make samasd27_som1_ek_graphics_defconfig
 ```
 
-* do make again
+* Compile bootloader again
   
 #### 3. Image
-* the file shown in the buildroot-at91/output/images path and place it under sam-ba_3.5:
+* The file shown in the buildroot-at91/output/images path and place it under sam-ba_3.5:
 
  ![ls](https://github.com/user-attachments/assets/eae2041c-3894-40c5-9996-55b32b9bac96)
 
-* open cmd under sma-ba_3.5 and enter nand.bat to start burning
+* Open cmd under sma-ba_3.5 and enter nand.bat to start burning
 connect the purple short-circuit line and then connect USB1, execute program.bat
 
 ![start burning](https://github.com/user-attachments/assets/5bbc82a9-a1b5-4932-a1b5-777b83b96eed)
 
-* after burning, enter
+* After burning
 ```
 sam-ba -p serial -d sama5d2 -a bootconfig -c writecfg:bscr:valid,bureg0 -c writecfg:bureg0:ext_mem_boot
 ```
 
-* press reset on the development version to boot successfully
+* Press reset on the development version to boot successfully
 
  ![boot successfully](https://github.com/user-attachments/assets/95d4711d-64cd-45cb-b518-60cb41af8760)
 
-## Debugging and Testing
-* Enable UART output to log bootloader and OS boot messages.
-* Perform extensive testing to validate peripheral drivers, memory access, and system stability.
