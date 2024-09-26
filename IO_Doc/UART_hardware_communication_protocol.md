@@ -1,0 +1,1 @@
+# UART hardware communication protocol
