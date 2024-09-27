@@ -36,6 +36,7 @@
   * FW: uboot 2019.04-at91
   * runtime: python 3.8
   * frameworks: OCPP v1.6
+  * Steve: OCPP Central System
 
 * Application Software (Application under development) :
   * Dashboard implemented by C/C++ :
